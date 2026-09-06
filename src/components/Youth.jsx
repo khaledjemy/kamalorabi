@@ -1,6 +1,35 @@
-import { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { LanguageContext } from '../context/LanguageContext'
-import { t } from '../i18n/translations'
-export default function YouthSection(){const {lang}=useContext(LanguageContext);const l=t[lang];const ar=lang==='ar';return <section className="ko-section ko-youth" id="youth"><div className="ko-section-inner"><div className="ko-section-label"><span>04 / {ar?'جيل المستقبل':'THE NEXT GENERATION'}</span><span>{ar?'فرص تصنع بداية':'ROOM TO GROW'}</span></div><div className="ko-youth-panel"><div className="ko-youth-copy"><span className="ko-kicker">{ar?'للطموح مكان هنا':'AMBITION BELONGS HERE'}</span><h2>{ar?'خطوتك القادمة تبدأ هنا.':'Your next chapter starts here.'}</h2><p>{l.youthText}</p><Link to="/HireMe" className="ko-primary ko-apply">{l.youthBtn}<span aria-hidden="true">↗</span></Link><span className="ko-application-note">{ar?'عرّفنا بنفسك وشارك سيرتك الذاتية.':'Tell us about yourself and share your CV.'}</span></div><div className="ko-youth-photo"><img src="/img/img3.jpg" alt={ar?'د. كمال عرابي مع فريق العمل':'Dr. Kamal Orabi with the team'} loading="lazy"/><div><span>{ar?'تمكين الشباب':'EMPOWERING POTENTIAL'}</span><strong>{ar?'نستثمر في الإنسان.':'Investing in people.'}</strong></div></div></div></div></section>}
+import { useContext } from "react"; // أضف useContext
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { LanguageContext } from "../context/LanguageContext";
+import { t } from "../i18n/translations";
 
+function YouthSection() {
+    const { lang } = useContext(LanguageContext);
+    const l = t[lang];
+
+    return (
+        <section className="youth-section" id="youth">
+            {/* BACKGROUND IMAGE */}
+            <div className="youth-overlay"></div>
+
+            <div className="container">
+                <motion.div
+                    className="youth-content"
+                    initial={{ opacity: 0, y: 80 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1 }}
+                    viewport={{ once: false }}
+                >
+                    <h2>{l.youthTitle}</h2>
+                    <p>{l.youthText}</p>
+                    <Link to="/HireMe" className="youth-btn">
+                        {l.youthBtn}
+                    </Link>
+                </motion.div>
+            </div>
+        </section>
+    );
+}
+
+export default YouthSection;

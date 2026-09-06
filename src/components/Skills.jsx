@@ -1,6 +1,42 @@
-import { useContext } from 'react'
-import { FaChartLine, FaUsers, FaMicrochip, FaBuilding } from 'react-icons/fa'
-import { LanguageContext } from '../context/LanguageContext'
-import { t } from '../i18n/translations'
-const groups=[{icon:FaChartLine,en:'Strategy & growth',ar:'الاستراتيجية والنمو',items:[1,5,9,13]},{icon:FaUsers,en:'Leadership & people',ar:'القيادة وبناء الفرق',items:[0,2,4,6]},{icon:FaMicrochip,en:'Digital & intelligence',ar:'التقنية والتحول الرقمي',items:[7,8,12]},{icon:FaBuilding,en:'Investment & finance',ar:'الاستثمار والإدارة المالية',items:[3,10,11]}]
-export default function Skills(){const {lang}=useContext(LanguageContext);const l=t[lang];const ar=lang==='ar';return <section className="ko-section ko-expertise" id="skills"><div className="ko-section-inner"><div className="ko-section-label"><span>03 / {ar?'الخبرات':'THE EXPERTISE'}</span><span>{ar?'خبرة متعددة الأبعاد':'A MULTIDISCIPLINARY PERSPECTIVE'}</span></div><div className="ko-section-heading"><h2>{l.skillsTitle}</h2><p>{ar?'خبرات متكاملة تربط بين رؤية الأعمال، والفرق التي تنفذها، والأدوات التي تدعم نموها.':'Connecting business vision, the people who bring it to life, and the tools that support its growth.'}</p></div><div className="ko-expertise-grid">{groups.map(({icon:Icon,en,ar:title,items},i)=><article className="ko-expertise-card" key={en}><div className="ko-card-top"><Icon aria-hidden="true"/><span>0{i+1}</span></div><h3>{ar?title:en}</h3><ul>{items.map(index=><li key={index}>{l.skillsList[index]}</li>)}</ul></article>)}</div></div></section>}
+import { useContext } from "react";
+import { motion } from "framer-motion";
+import { LanguageContext } from "../context/LanguageContext";
+import { t } from "../i18n/translations";
+
+function Skills() {
+    const { lang } = useContext(LanguageContext);
+    const l = t[lang];
+
+    // استخدام قائمة المهارات المترجمة من ملف الترجمة
+    const skillsList = l.skillsList;
+
+    return (
+        <section className="skills" id="skills">
+            <div className="container">
+                <h2 className="skills-title">
+                    {l.skillsTitle}
+                </h2>
+
+                <div className="skills-wrap">
+                    {
+                        skillsList.map((skill, index) => (
+                            <motion.div
+                                key={index}
+                                className="skill-pill"
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, delay: index * 0.05 }}
+                                whileHover={{ scale: 1.08 }}
+                                viewport={{ once: false }}
+                            >
+                                {skill}
+                            </motion.div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+    );
+}
+
+export default Skills;

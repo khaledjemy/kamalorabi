@@ -1,7 +1,73 @@
-import { useContext } from 'react'
-import { LanguageContext } from '../context/LanguageContext'
-import { t } from '../i18n/translations'
-export default function Company(){
- const {lang}=useContext(LanguageContext);const l=t[lang];const ar=lang==='ar'
- return <section className="ko-section ko-company" id="company"><div className="ko-section-inner"><div className="ko-section-label"><span>02 / {ar?'الشركة':'THE COMPANY'}</span><span>TRADEMARK GROUPS</span></div><div className="ko-company-grid"><div className="ko-company-visual"><img src="/img/img3.jpeg" alt={ar?'مجموعة تريد مارك':'TradeMark Groups'} loading="lazy"/><div className="ko-company-detail"><img src="/img/img4.jpg" alt={ar?'من أعمال مجموعة تريد مارك':'TradeMark Groups in focus'} loading="lazy"/><span>{ar?'من الاستراتيجية إلى التنفيذ':'FROM STRATEGY TO EXECUTION'}</span></div></div><div className="ko-story-copy"><span className="ko-kicker">{l.companySubtitle}</span><h2>{ar?'شراكة في الرؤية. قوة في التنفيذ.':'Built on vision. Driven by purpose.'}</h2><p>{l.companyText1}</p><p>{l.companyText3}</p><div className="ko-service-lines">{(ar?['استشارات الأعمال والنمو','التحول الرقمي','الاستثمار العقاري']:['Business consulting & growth','Digital transformation','Real estate investment']).map((x,i)=><div key={x}><span>0{i+1}</span>{x}</div>)}</div><div className="ko-company-note"><strong>2021</strong><span>{l.companyStat3}</span></div></div></div></div></section>
+import { useContext } from "react";
+import { motion } from "framer-motion";
+import { LanguageContext } from "../context/LanguageContext";
+import { t } from "../i18n/translations";
+
+function Company() {
+    const { lang } = useContext(LanguageContext);
+    const l = t[lang];
+
+    return (
+        <section className="company-section" id="company">
+            <div className="container">
+                <div className="company-wrapper">
+
+                    {/* IMAGES SIDE */}
+                    <motion.div
+                        className="company-images"
+                        initial={{ opacity: 0, x: -100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1 }}
+                        viewport={{ once: false }}
+                    >
+                        <div className="company-img main-company-img">
+                            <img src="./img/img3.jpeg" alt="Company" />
+                        </div>
+                        <div className="company-img small-company-img">
+                            <img src="./img/img4.jpeg" alt="Office" />
+                        </div>
+                    </motion.div>
+
+                    {/* CONTENT SIDE */}
+                    <motion.div
+                        className="company-content"
+                        initial={{ opacity: 0, x: 100 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 1 }}
+                        viewport={{ once: false }}
+                    >
+                        <span className="company-subtitle">
+                            {l.companySubtitle}
+                        </span>
+
+                        <h2>
+                            {l.companyTitle}
+                        </h2>
+
+                        <p>{l.companyText1}</p>
+                        <p>{l.companyText2}</p>
+                        <p>{l.companyText3}</p>
+
+                        <div className="company-stats">
+                            <div className="company-card">
+                                <h3>20+</h3>
+                                <span>{l.companyStat1}</span>
+                            </div>
+                            <div className="company-card">
+                                <h3>100M+</h3>
+                                <span>{l.companyStat2}</span>
+                            </div>
+                            <div className="company-card">
+                                <h3>2021</h3>
+                                <span>{l.companyStat3}</span>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                </div>
+            </div>
+        </section>
+    );
 }
+
+export default Company;
