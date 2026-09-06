@@ -1387,3 +1387,14 @@ html[dir="rtl"] .mobile-menu.active{
     }
 
 }
+
+/* HERO VIDEO - final layout */
+.hero-video { min-height: 100svh; background: #050505; isolation: isolate; }
+.hero-video::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.42)); }
+.hero-video .background-video { z-index: 0; object-fit: contain; object-position: center; background: #050505; }
+.hero-video .hero-content, .hero-video .video-controls { z-index: 2; }
+.hero-video .hero-content h1 { margin: 0; }
+.hero-video .hero-content .logo_img { width: 86px; height: 86px; opacity: .9; }
+.hero-video .hero-btn { margin-top: 22px; padding: 12px 32px; font-size: 14px; }
+.hero-video .video-controls { bottom: 24px; }
+@media (max-width: 768px) { .hero-video .hero-content .logo_img { width: 64px; height: 64px; } .hero-video .hero-btn { margin-top: 14px; padding: 10px 26px; font-size: 13px; } .hero-video .video-controls { bottom: 16px; } }
