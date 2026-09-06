@@ -3,6 +3,8 @@ import App from './App'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles/main.css'
+import './styles/hero-refresh.css'
+import './styles/sections-refresh.css'
   import { LanguageProvider } from "./context/LanguageContext"
 
 ReactDOM.createRoot(document.getElementById('root')).render(

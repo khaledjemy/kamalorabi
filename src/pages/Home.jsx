@@ -2,7 +2,6 @@ import HeroVideo from "../components/HeroVideo"
 import About from "../components/About"
 import Skills from "../components/Skills"
 import YouthSection from "../components/Youth"
-import Navbar from "../components/Navbar"
 import Company from "../components/Company"
 import Gallery from "../components/Gallary"
 import { useEffect } from "react"
@@ -28,7 +27,6 @@ function Home() {
     }, [location])
     return (
         <>
-            <Navbar />
 
             <HeroVideo />
 

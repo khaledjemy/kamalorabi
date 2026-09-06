@@ -1,73 +1,7 @@
-import { useState, useContext } from "react";
-import { LanguageContext } from "../context/LanguageContext";
-import { t } from "../i18n/translations";
-import { motion } from "framer-motion";
-
-function About() {
-    const { lang } = useContext(LanguageContext);
-    const l = t[lang]; // اختيار الترجمة حسب اللغة الحالية
-
-    return (
-        <section className="about-section" id="about">
-            <div className="container">
-                <div className="about-wrapper">
-
-                    {/* LEFT CONTENT */}
-                    <motion.div
-                        className="about-content"
-                        initial={{ opacity: 0, x: -100 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1 }}
-                        viewport={{ once: false }}
-                    >
-                        <span className="about-subtitle">
-                            {l.aboutSubtitle}
-                        </span>
-
-                        <h2>
-                            {l.aboutTitle}
-                        </h2>
-
-                        <p>{l.aboutText1}</p>
-                        <p>{l.aboutText2}</p>
-                        <p>{l.aboutText3}</p>
-
-                        <div className="about-info">
-                            <div className="info-card">
-                                <h3>20+</h3>
-                                <span>{l.infoYears}</span>
-                            </div>
-                            <div className="info-card">
-                                <h3>100M+</h3>
-                                <span>{l.infoGrowth}</span>
-                            </div>
-                            <div className="info-card">
-                                <h3>CEO</h3>
-                                <span>{l.infoCEO}</span>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* RIGHT IMAGES */}
-                    <motion.div
-                        className="about-images"
-                        initial={{ opacity: 0, x: 100 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1 }}
-                        viewport={{ once: false }}
-                    >
-                        <div className="about-img main-img">
-                            <img src="./img/img.jpg" alt="" />
-                        </div>
-                        <div className="about-img small-img">
-                            <img src="./img/img2.jpg" alt="" />
-                        </div>
-                    </motion.div>
-
-                </div>
-            </div>
-        </section>
-    );
+import { useContext } from 'react'
+import { LanguageContext } from '../context/LanguageContext'
+import { t } from '../i18n/translations'
+export default function About(){
+ const {lang}=useContext(LanguageContext);const l=t[lang];const ar=lang==='ar'
+ return <section className="ko-section ko-about" id="about"><div className="ko-section-inner"><div className="ko-section-label"><span>01 / {ar?'المسيرة':'THE JOURNEY'}</span><span>{ar?'رؤية تقود النمو':'A VISION FOR GROWTH'}</span></div><div className="ko-story-grid"><div className="ko-story-copy"><span className="ko-kicker">{l.aboutSubtitle}</span><h2>{l.aboutTitle}</h2><p>{ar?'رائد أعمال ومستشار استراتيجي يتمتع بأكثر من ٢٠ عامًا من الخبرة في تطوير الأعمال وقيادة النمو.':'An entrepreneur and strategic business consultant with more than 20 years of experience in business development and growth.'}</p><p>{ar?'بصفته المؤسس والرئيس التنفيذي لمجموعة تريد مارك، يجمع بين التخطيط الاستراتيجي وتطوير القيادات لمساعدة الأعمال على التوسع والتطور.':'As Founder & CEO of TradeMark Groups, he brings together strategic planning and leadership development to help businesses evolve and expand.'}</p><div className="ko-stat-row"><div><strong>20+</strong><span>{l.infoYears}</span></div><div><strong>100M+</strong><span>{l.infoGrowth}</span></div><div><strong>CEO</strong><span>{l.infoCEO}</span></div></div></div><div className="ko-story-images"><img className="ko-story-main" src="/img/img.jpg" alt={ar?'د. كمال عرابي':'Dr. Kamal Orabi'} loading="lazy"/><img className="ko-story-inset" src="/img/img2.jpg" alt={ar?'من مسيرة د. كمال عرابي':'From Dr. Kamal Orabi’s professional journey'} loading="lazy"/></div></div></div></section>
 }
-
-export default About;
